@@ -18,8 +18,7 @@ app.use('/assets', express.static(__dirname + '/assets'));
 
 // Configuracion de mercadopago
 mercadopago.configure({
-    access_token:
-        'APP_USR-1159009372558727-072921-8d0b9980c7494985a5abd19fbe921a3d-617633181',
+    access_token: 'APP_USR-1159009372558727-072921-8d0b9980c7494985a5abd19fbe921a3d-617633181',
     integrator_id: 'dev_24c65fb163bf11ea96500242ac130004',
 });
 
@@ -38,27 +37,27 @@ app.get('/detail', function (req, res) {
                 picture_url:
                     'https://frankode-shop.herokuapp.com/' +
                     req.query.img.substring(1),
-                category_id: '1234',
+                // category_id: '1234',
                 quantity: Number(req.query.unit),
-                currency_id: 'MXN',
+                // currency_id: 'MXN',
                 unit_price: Number(req.query.price),
-                external_reference: 'franciscomagana.contact@gmail.com',
+                // external_reference: 'franciscomagana.contact@gmail.com',
             },
         ],
         external_reference: 'franciscomagana.contact@gmail.com',
         payer: {
-            name: 'Lalo',
-            surname: 'Landa',
-            email: 'test_user_81131286@testuser.com',
+            name: "Lalo",
+            surname: "Landa",
+            email: "test_user_81131286@testuser.com",
             phone: {
-                area_code: '11',
-                number: Number(22223333),
+                "area_code": "11",
+                "number": 22223333
             },
             address: {
-                street_name: 'Falsa',
-                street_number: Number(123),
-                zip_code: '1111',
-            },
+                "street_name": "Insurgentes Sur",
+                "street_number": 123,
+                "zip_code": "1111"
+            }
         },
         payment_methods: {
             excluded_payment_methods: [{ id: 'amex' }],
@@ -82,6 +81,7 @@ app.get('/detail', function (req, res) {
     mercadopago.preferences
         .create(preference)
         .then(function (response) {
+            console.log("respuesta mercadp");
             console.log(response);
             id = response.body.id;
             // Este valor reemplazará el string "<%= global.id %>" en tu HTML
