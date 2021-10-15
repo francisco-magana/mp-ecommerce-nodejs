@@ -55,7 +55,7 @@ app.get('/detail', function (req, res) {
                 number: Number(22223333),
             },
             address: {
-                street_name: 'Calle Falsa',
+                street_name: 'Falsa',
                 street_number: Number(123),
                 zip_code: '1111',
             },
@@ -93,9 +93,7 @@ app.get('/detail', function (req, res) {
         .catch(function (error) {
             console.log(error);
             res.render('failed', req.query);
-        });
-
-    res.render('detail', req.query);
+        });  
 
 });
 
